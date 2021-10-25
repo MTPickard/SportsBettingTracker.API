@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_SportsBetting.Models", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03_SportsBetting.Services", "03_SportsBetting.Services\03_SportsBetting.Services.csproj", "{506FC0FF-22E7-4E92-92FB-01401B7EC4F6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "00_UI", "00_UI\00_UI.csproj", "{0108EC48-7FD1-41D9-9E5F-A3D0480A06CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{506FC0FF-22E7-4E92-92FB-01401B7EC4F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{506FC0FF-22E7-4E92-92FB-01401B7EC4F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{506FC0FF-22E7-4E92-92FB-01401B7EC4F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0108EC48-7FD1-41D9-9E5F-A3D0480A06CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0108EC48-7FD1-41D9-9E5F-A3D0480A06CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0108EC48-7FD1-41D9-9E5F-A3D0480A06CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0108EC48-7FD1-41D9-9E5F-A3D0480A06CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
