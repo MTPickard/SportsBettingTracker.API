@@ -8,6 +8,6 @@ namespace _01_SportsBetting.Data
 {
     public class User
     {
-        //commit message
+        //commit message added develop
     }
 }
