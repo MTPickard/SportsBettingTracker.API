@@ -32,5 +32,7 @@ namespace _01_SportsBetting.Data
 
         [Required]
         public DateTimeOffset CreatedUTC { get; set; }
+
+        public DateTimeOffset? ModifiedUTC { get; set; }
     }
 }

@@ -100,6 +100,7 @@ namespace _03_SportsBetting.Services
                 entity.BetParameters = bet.BetParameters;
                 entity.ToWin = bet.ToWin;
                 entity.IsResolved = bet.IsResolved;
+                entity.ModifiedUTC = DateTimeOffset.Now;
 
                 return ctx.SaveChanges() == 1;
             }
