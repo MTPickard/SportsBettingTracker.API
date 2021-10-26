@@ -12,5 +12,6 @@ namespace _02_SportsBetting.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string FullName { get; set; }
+        public DateTimeOffset? ModifiedUTC { get; set; }
     }
 }
