@@ -13,6 +13,6 @@ namespace _02_SportsBetting.Models
         public double Credit { get; set; }
         public double Debit { get; set; }
         public string TransactionNote { get; set; }
-        public DateTimeOffset CreatedUtc { get; set; }
+        public DateTimeOffset? ModifiedUtc { get; set; }
     }
 }
