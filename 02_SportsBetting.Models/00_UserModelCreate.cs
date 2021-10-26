@@ -5,16 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _01_SportsBetting.Data
+namespace _02_SportsBetting.Models
 {
-    public class User
+    class _00_UserModelCreate
     {
-        [Key]
-        public int UserId { get; set; }
-
-        [Required]
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+
+        public string FullName { get; set; }
     }
 }

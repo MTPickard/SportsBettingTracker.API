@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace _02_SportsBetting.Models
 {
-    class _00_UserModel
+    class _00_UserModelEdit
     {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string FullName { get; set; }
     }
 }

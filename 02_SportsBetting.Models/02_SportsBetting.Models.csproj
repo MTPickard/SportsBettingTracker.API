@@ -84,7 +84,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="00_UserModel.cs" />
+    <Compile Include="00_UserModelDetail.cs" />
+    <Compile Include="00_UserModelCreate.cs" />
+    <Compile Include="00_UserModelEdit.cs" />
+    <Compile Include="00_UserModelListItem.cs" />
     <Compile Include="01_BetModel.cs" />
     <Compile Include="02_BookModel.cs" />
     <Compile Include="03_TransactionModel.cs" />
