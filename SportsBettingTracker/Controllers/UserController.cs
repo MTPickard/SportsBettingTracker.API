@@ -12,7 +12,7 @@ namespace SportsBettingTracker.Controllers
 {
     public class UserController : ApiController
     {
-        public IHttpActionResult Get()
+        public IHttpActionResult GetAllUsers()
         {
             UserService userService = CreateUserService();
             var users = userService.GetUsers();
@@ -35,7 +35,7 @@ namespace SportsBettingTracker.Controllers
         public IHttpActionResult Get(int id)
         {
             UserService userService = CreateUserService();
-            var note = userService.GetUserById(id);
+            var user = userService.GetUserById(id);
             return Ok();
         }
 
