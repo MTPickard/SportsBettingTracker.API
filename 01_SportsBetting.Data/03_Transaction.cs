@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,8 @@ namespace _01_SportsBetting.Data
 
         [ForeignKey(nameof(BookId))]
         public int BookId { get; set; }
+
+        [Key]
         public int TransactionId { get; set; }
         public double Credit { get; set; }
         public double Debit { get; set; }
