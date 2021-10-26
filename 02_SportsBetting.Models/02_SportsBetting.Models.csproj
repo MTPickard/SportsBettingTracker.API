@@ -85,7 +85,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="00_UserModel.cs" />
-    <Compile Include="01_BetModel.cs" />
+    <Compile Include="01_BetDetail.cs" />
+    <Compile Include="01_BetCreate.cs" />
+    <Compile Include="01_BetEdit.cs" />
+    <Compile Include="01_BetListItem.cs" />
     <Compile Include="02_BookModel.cs" />
     <Compile Include="03_TransactionModel.cs" />
     <Compile Include="04_ResultModel.cs" />
