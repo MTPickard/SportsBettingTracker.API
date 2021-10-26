@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _02_SportsBetting.Models
 {
-    class _00_UserModelListItem
+    public class UserModelListItem
     {
         public int UserId { get; set; }
         public string FirstName { get; set; }

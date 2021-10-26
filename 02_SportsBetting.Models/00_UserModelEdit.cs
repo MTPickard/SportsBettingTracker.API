@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace _02_SportsBetting.Models
 {
-    class _00_UserModelEdit
+    public class UserModelEdit
     {
+        public int UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string FullName { get; set; }

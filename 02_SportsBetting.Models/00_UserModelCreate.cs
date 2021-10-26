@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace _02_SportsBetting.Models
 {
-    class _00_UserModelCreate
+    public class UserModelCreate
     {
         public string FirstName { get; set; }
 
