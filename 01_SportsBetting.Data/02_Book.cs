@@ -11,5 +11,7 @@ namespace _01_SportsBetting.Data
     {
         [ForeignKey(nameof(UserId))]
         public int UserId { get; set; }
+
+        public virtual List<Transaction> _transactions { get; set; }
     }
 }
