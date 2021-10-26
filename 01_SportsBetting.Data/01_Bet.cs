@@ -8,5 +8,6 @@ namespace _01_SportsBetting.Data
 {
     public class Bet
     {
+        //added mitch branch
     }
 }
