@@ -84,6 +84,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="00_UserModel.cs" />
+    <Compile Include="01_BetDetail.cs" />
+    <Compile Include="01_BetCreate.cs" />
+    <Compile Include="01_BetEdit.cs" />
+    <Compile Include="01_BetListItem.cs" />
     <Compile Include="00_UserModelDetail.cs" />
     <Compile Include="00_UserModelCreate.cs" />
     <Compile Include="00_UserModelEdit.cs" />

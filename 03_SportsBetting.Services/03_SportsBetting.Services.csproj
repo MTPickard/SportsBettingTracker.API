@@ -96,6 +96,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\00_UI\00_UI.csproj">
+      <Project>{0108ec48-7fd1-41d9-9e5f-a3d0480a06cf}</Project>
+      <Name>00_UI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\01_SportsBetting.Data\01_SportsBetting.Data.csproj">
       <Project>{51E49497-2ABB-46F7-BCB9-F542A2E4E80C}</Project>
       <Name>01_SportsBetting.Data</Name>
