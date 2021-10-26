@@ -95,7 +95,10 @@
     <Compile Include="00_UserModelListItem.cs" />
     <Compile Include="01_BetModel.cs" />
     <Compile Include="02_BookModel.cs" />
-    <Compile Include="03_TransactionModel.cs" />
+    <Compile Include="03_TransactionDetail.cs" />
+    <Compile Include="03_TransactionEdit.cs" />
+    <Compile Include="03_TransactionListItem.cs" />
+    <Compile Include="03_TransactionModelCreate.cs" />
     <Compile Include="04_ResultModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
