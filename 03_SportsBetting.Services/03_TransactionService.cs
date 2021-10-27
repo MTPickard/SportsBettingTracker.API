@@ -18,12 +18,8 @@ namespace _03_SportsBetting.Services
             _userId = userId;
         }
 
-<<<<<<< HEAD
         //Post CreateNewTransaction
-        public bool CreateNewTransaction(TransactionModelCreate model)
-=======
         public bool CreateNewTransaction(TransactionCreate model)
->>>>>>> b0813e183d5e7c2d50bd66c2010152a075b9063c
         {
             var entity =
                 new Transaction()

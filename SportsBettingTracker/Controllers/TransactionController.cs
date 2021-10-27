@@ -21,7 +21,7 @@ namespace SportsBettingTracker.Controllers
         }
 
         //Post Post New Transaction
-        public IHttpActionResult PostNewTransaction(TransactionModelCreate transaction)
+        public IHttpActionResult PostNewTransaction(TransactionCreate transaction)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
