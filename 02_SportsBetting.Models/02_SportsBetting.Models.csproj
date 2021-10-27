@@ -98,14 +98,22 @@
     <Compile Include="03_TransactionDetail.cs" />
     <Compile Include="03_TransactionEdit.cs" />
     <Compile Include="03_TransactionListItem.cs" />
-    <Compile Include="03_TransactionModelCreate.cs" />
-    <Compile Include="04_ResultModel.cs" />
+    <Compile Include="03_TransactionCreate.cs" />
+    <Compile Include="04_ResultCreate.cs" />
+    <Compile Include="04_ResultDetail.cs" />
+    <Compile Include="04_ResultEdit.cs" />
+    <Compile Include="04_ResultListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\01_SportsBetting.Data\01_SportsBetting.Data.csproj">
+      <Project>{51e49497-2abb-46f7-bcb9-f542a2e4e80c}</Project>
+      <Name>01_SportsBetting.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -18,7 +18,7 @@ namespace _03_SportsBetting.Services
             _userId = userId;
         }
 
-        public bool CreateNewTransaction(TransactionModelCreate model)
+        public bool CreateNewTransaction(TransactionCreate model)
         {
             var entity =
                 new Transaction()
