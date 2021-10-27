@@ -14,18 +14,22 @@ namespace _01_SportsBetting.Data
         public int BookId { get; set; }
 
         [ForeignKey(nameof(UserId))]
-        public Guid UserId { get; set; }
+        public int UserId { get; set; }
 
         public virtual List<Transaction> _transactions { get; set; }
 
         public virtual List<Bet> _bets { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
+        [Required]
         public double Balance { get; set; }
 
+        [Required]
         public string BookReference { get; set; }
 
+        [Required]
         public DateTimeOffset CreatedUtc { get; set; }
 
         public DateTimeOffset ModifiedUtc { get; set; }

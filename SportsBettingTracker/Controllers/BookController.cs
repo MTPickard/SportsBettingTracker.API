@@ -1,5 +1,4 @@
-﻿using _01_SportsBetting.Data;
-using _02_SportsBetting.Models;
+﻿using _02_SportsBetting.Models;
 using _03_SportsBetting.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -13,8 +12,8 @@ namespace SportsBettingTracker.Controllers
 {
     public class BookController : ApiController
     {
-        [HttpPost]
-        public IHttpActionResult Post(_02_BookModel book)
+        // C POST PostBook
+        public IHttpActionResult PostBook(BookCreate book)
         {
             if (!ModelState.IsValid)
             {
@@ -27,27 +26,27 @@ namespace SportsBettingTracker.Controllers
             {
                 return InternalServerError();
             }
-            return Ok();
+            return Ok("Book has been added.");
         }
 
-        [HttpGet]
-        public IHttpActionResult Get()
+        // R GET GetBooksbyUserId
+        public IHttpActionResult GetBooksByUserId()
         {
-            _02_BookService bookService = CreateBookService();
-            var books = bookService.GetBookByUserId();
+            BookService bookService = CreateBookService();
+            var books = bookService.ViewBooksByUserId();
             return Ok(books);
         }
 
-        [HttpGet]
-        public IHttpActionResult GetByBookId(int id)
+        // R GET GetBookByBookId
+        public IHttpActionResult GetBookByBookId(int id)
         {
-            _02_BookService bookService = CreateBookService();
-            var book = bookService.GetBookByBookId(id);
+            BookService bookService = CreateBookService();
+            var book = bookService.ViewBookByBookId(id);
             return Ok(book);
         }
 
-        [HttpPut]
-        public IHttpActionResult Put(Book book)
+        // U PUT PutBookByBookId
+        public IHttpActionResult PutBookByBookId(BookEdit book)
         {
             if (!ModelState.IsValid)
             {
@@ -56,30 +55,30 @@ namespace SportsBettingTracker.Controllers
 
             var service = CreateBookService();
 
-            if (!service.UpdateBook(book))
+            if (!service.UpdateBookByBookId(book))
             {
                 return InternalServerError();
             }
-            return Ok();
+            return Ok("Book updated.");
         }
 
-        // D - Delete One By GameId
-        [HttpDelete]
-        public IHttpActionResult Delete(int id)
+        // D DELETE DeleteBookByBookId
+        public IHttpActionResult DeleteBookByBookId(int id)
         {
             var service = CreateBookService();
 
-            if (service.DeleteBook(id))
+            if (!service.RemoveBookByBookId(id))
             {
                 return InternalServerError();
             }
-            return Ok();
+            return Ok("Book deleted.");
         }
 
-        private _02_BookService CreateBookService()
+        // "Helper Method"
+        private BookService CreateBookService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var bookService = new _02_BookService(userId);
+            var userId = int.Parse(User.Identity.GetUserId());
+            var bookService = new BookService(userId);
             return bookService;
         }
     }

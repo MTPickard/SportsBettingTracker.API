@@ -27,7 +27,7 @@ namespace SportsBettingTracker.Controllers
             return Ok();
         }
 
-        // R GET GetAllResultsByUserId [!]
+        // R GET GetAllResultsByUserId
         public IHttpActionResult GetResultsByUserId()
         {
             ResultService resultService = CreateResultService();

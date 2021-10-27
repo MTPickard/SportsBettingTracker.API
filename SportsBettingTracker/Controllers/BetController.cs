@@ -12,7 +12,7 @@ namespace SportsBettingTracker.Controllers
 {
     public class BetController : ApiController
     {
-        [HttpPost]
+        // C POST PostBet
         public IHttpActionResult PostBet(BetCreate bet)
         {
             if(!ModelState.IsValid)
@@ -29,24 +29,24 @@ namespace SportsBettingTracker.Controllers
             return Ok("Bet has been added.");
         }
 
-        [HttpGet]
-        public IHttpActionResult GetAllBets()
+        // R GET GetBetsByUserId
+        public IHttpActionResult GetBetsByUserId()
         {
             BetService betService = CreateBetService();
-            var bets = betService.GetBets();
+            var bets = betService.ViewBetsByUserId();
             return Ok(bets);
         }
 
-        [HttpGet]
-        public IHttpActionResult GetBetById(int id)
+        // R GET GetBetByBetId
+        public IHttpActionResult GetBetByBetId(int id)
         {
             BetService betService = CreateBetService();
-            var bet = betService.GetBetById(id);
+            var bet = betService.ViewBetByBetId(id);
             return Ok(bet);
         }
 
-        [HttpPut]
-        public IHttpActionResult Put(BetEdit bet)
+        // U PUT PutBetByBetId
+        public IHttpActionResult PutBetByBetId(BetEdit bet)
         {
             if(!ModelState.IsValid)
             {
@@ -55,26 +55,26 @@ namespace SportsBettingTracker.Controllers
 
             var service = CreateBetService();
 
-            if(!service.UpdateBet(bet))
+            if(!service.UpdateBetByBetId(bet))
             {
                 return InternalServerError();
             }
             return Ok("Bet updated.");
         }
 
-        [HttpDelete]
-        public IHttpActionResult DeleteBet(int id)
+        // D DELETE DeleteBetByBetId
+        public IHttpActionResult DeleteBetByBetId(int id)
         {
             var service = CreateBetService();
 
-            if(!service.DeleteBet(id))
+            if(!service.RemoveBetByBetId(id))
             {
                 return InternalServerError();
             }
             return Ok("Bet deleted.");
         }
 
-        //HelperMethod
+        // HelperMethod
         private BetService CreateBetService()
         {
             var userId = int.Parse(User.Identity.GetUserId());

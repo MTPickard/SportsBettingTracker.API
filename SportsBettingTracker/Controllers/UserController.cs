@@ -12,6 +12,7 @@ namespace SportsBettingTracker.Controllers
 {
     public class UserController : ApiController
     {
+        // C POST PostUser
         public IHttpActionResult GetAllUsers()
         {
             UserService userService = CreateUserService();
@@ -19,6 +20,7 @@ namespace SportsBettingTracker.Controllers
             return Ok(users);
         }
 
+        // R GET GetUsers
         public IHttpActionResult Post(UserModelCreate user)
         {
             if (!ModelState.IsValid)
@@ -32,6 +34,7 @@ namespace SportsBettingTracker.Controllers
             return Ok();
         }
 
+        // R GET GetUserByUserId
         public IHttpActionResult Get(int id)
         {
             UserService userService = CreateUserService();
@@ -39,6 +42,7 @@ namespace SportsBettingTracker.Controllers
             return Ok();
         }
 
+        // U PUT PutUserByUserId
         public IHttpActionResult Put(UserModelEdit user)
         {
             if (!ModelState.IsValid)
@@ -52,6 +56,7 @@ namespace SportsBettingTracker.Controllers
             return Ok();
         }
 
+        // D DELETE DeleteUserByUserId
         public IHttpActionResult Delete(int id)
         {
             var service = CreateUserService();
@@ -62,6 +67,7 @@ namespace SportsBettingTracker.Controllers
             return Ok();
         }
 
+        // Helper Method
         private UserService CreateUserService()
         {
             var userId = int.Parse(User.Identity.GetUserId());

@@ -18,6 +18,7 @@ namespace _03_SportsBetting.Services
             _userId = userId;
         }
 
+        // C POST CreateBet
         public bool CreateBet(BetCreate bet)
         {
             var entity =
@@ -40,7 +41,8 @@ namespace _03_SportsBetting.Services
             }
         }
 
-        public IEnumerable<BetListItem> GetBets()
+        // R GET ViewBetsByUserId
+        public IEnumerable<BetListItem> ViewBetsByUserId()
         {
             using(var ctx = new ApplicationDbContext())
             {
@@ -64,7 +66,8 @@ namespace _03_SportsBetting.Services
             }
         }
 
-        public BetDetail GetBetById(int id)
+        // R GET ViewBetByBetId
+        public BetDetail ViewBetByBetId(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -85,8 +88,9 @@ namespace _03_SportsBetting.Services
                     };
             }
         }
-        
-        public bool UpdateBet(BetEdit bet)
+
+        // U PUT UpdateBetByBetId
+        public bool UpdateBetByBetId(BetEdit bet)
         {
             using(var ctx = new ApplicationDbContext())
             {
@@ -106,7 +110,8 @@ namespace _03_SportsBetting.Services
             }
         }
 
-        public bool DeleteBet(int betId)
+        // D DELETE RemoveBetByBetId
+        public bool RemoveBetByBetId(int betId)
         {
             using(var ctx = new ApplicationDbContext())
             {
