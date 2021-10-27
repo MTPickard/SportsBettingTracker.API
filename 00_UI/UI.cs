@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _02_SportsBetting.Models
+namespace _00_UI
 {
-    class _00_UserModel
+    public class UI
     {
+        //added UI
     }
 }

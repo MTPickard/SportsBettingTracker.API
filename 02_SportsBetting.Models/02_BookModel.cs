@@ -8,5 +8,10 @@ namespace _02_SportsBetting.Models
 {
     public class _02_BookModel
     {
+        public string Name { get; set; }
+
+        public double Balance { get; set; }
+
+        public string BookReference { get; set; }
     }
 }

@@ -84,16 +84,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="00_UserModel.cs" />
-    <Compile Include="01_BetModel.cs" />
+    <Compile Include="01_BetDetail.cs" />
+    <Compile Include="01_BetCreate.cs" />
+    <Compile Include="01_BetEdit.cs" />
+    <Compile Include="01_BetListItem.cs" />
+    <Compile Include="00_UserModelDetail.cs" />
+    <Compile Include="00_UserModelCreate.cs" />
+    <Compile Include="00_UserModelEdit.cs" />
+    <Compile Include="00_UserModelListItem.cs" />
     <Compile Include="02_BookModel.cs" />
-    <Compile Include="03_TransactionModel.cs" />
-    <Compile Include="04_ResultModel.cs" />
+    <Compile Include="03_TransactionDetail.cs" />
+    <Compile Include="03_TransactionEdit.cs" />
+    <Compile Include="03_TransactionListItem.cs" />
+    <Compile Include="03_TransactionCreate.cs" />
+    <Compile Include="04_ResultCreate.cs" />
+    <Compile Include="04_ResultDetail.cs" />
+    <Compile Include="04_ResultEdit.cs" />
+    <Compile Include="04_ResultListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\01_SportsBetting.Data\01_SportsBetting.Data.csproj">
+      <Project>{51e49497-2abb-46f7-bcb9-f542a2e4e80c}</Project>
+      <Name>01_SportsBetting.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
