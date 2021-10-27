@@ -13,7 +13,7 @@ namespace SportsBettingTracker.Controllers
     [Authorize]
     public class ResultController : ApiController
     {
-        // C-Post
+        // C POST PostResult
         public IHttpActionResult PostResult(ResultCreate result)
         {
             if (!ModelState.IsValid)
@@ -27,7 +27,7 @@ namespace SportsBettingTracker.Controllers
             return Ok();
         }
 
-        // R-GetAll By UserId
+        // R GET GetResultsByUserId
         public IHttpActionResult GetResultsByUserId()
         {
             ResultService resultService = CreateResultService();
@@ -35,7 +35,7 @@ namespace SportsBettingTracker.Controllers
             return Ok(results);
         }
 
-        // R-GetOne By ResultId
+        // R GET GetResultByResultId
         public IHttpActionResult GetResultByResultId(int resultId)
         {
             ResultService resultService = CreateResultService();
@@ -43,7 +43,7 @@ namespace SportsBettingTracker.Controllers
             return Ok(result);
         }
 
-        // U-Put
+        // U PUT PutResultByResultId
         public IHttpActionResult PutResultByResultId(ResultEdit result)
         {
             if (!ModelState.IsValid)
@@ -57,7 +57,7 @@ namespace SportsBettingTracker.Controllers
             return Ok();
         }
 
-        // D-Delete
+        // D DELETE DeleteResultByResultId
         public IHttpActionResult DeleteResultByResultId(int resultId)
         {
             var service = CreateResultService();
