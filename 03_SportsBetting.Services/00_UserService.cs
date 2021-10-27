@@ -18,6 +18,7 @@ namespace _03_SportsBetting.Services
             _userId = userId;
         }
 
+        //Throwing note in here
         // C POST CreateUser
         public bool CreateUser(UserModelCreate model)
         {
