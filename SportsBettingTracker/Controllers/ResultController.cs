@@ -27,7 +27,7 @@ namespace SportsBettingTracker.Controllers
             return Ok();
         }
 
-        // R GET GetResultsByUserId
+        // R GET GetAllResultsByUserId [!]
         public IHttpActionResult GetResultsByUserId()
         {
             ResultService resultService = CreateResultService();
@@ -35,7 +35,7 @@ namespace SportsBettingTracker.Controllers
             return Ok(results);
         }
 
-        // R GET GetResultByResultId
+        // R GET GetOneResultByResultId
         public IHttpActionResult GetResultByResultId(int resultId)
         {
             ResultService resultService = CreateResultService();
