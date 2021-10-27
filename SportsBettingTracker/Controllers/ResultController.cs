@@ -31,7 +31,7 @@ namespace SportsBettingTracker.Controllers
         public IHttpActionResult GetResultsByUserId()
         {
             ResultService resultService = CreateResultService();
-            var results = resultService.GetResults();
+            var results = resultService.ViewResultsByUserId();
             return Ok(results);
         }
 
@@ -39,7 +39,7 @@ namespace SportsBettingTracker.Controllers
         public IHttpActionResult GetResultByResultId(int resultId)
         {
             ResultService resultService = CreateResultService();
-            var result = resultService.GetResultById(resultId);
+            var result = resultService.ViewResultByResultId(resultId);
             return Ok(result);
         }
 
@@ -51,7 +51,7 @@ namespace SportsBettingTracker.Controllers
 
             var service = CreateResultService();
 
-            if (!service.UpdateResult(result))
+            if (!service.UpdateResultByResultId(result))
                 return InternalServerError();
 
             return Ok();
@@ -62,7 +62,7 @@ namespace SportsBettingTracker.Controllers
         {
             var service = CreateResultService();
 
-            if (!service.DeleteResult(resultId))
+            if (!service.RemoveResultByResultId(resultId))
                 return InternalServerError();
 
             return Ok();

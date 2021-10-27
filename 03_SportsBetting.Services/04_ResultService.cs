@@ -18,6 +18,7 @@ namespace _03_SportsBetting.Services
             _userId = userId;
         }
 
+        // C POST CreateResult
         public bool CreateResult(ResultCreate model)
         {
             var entity =
@@ -35,7 +36,8 @@ namespace _03_SportsBetting.Services
             }
         }
 
-        public IEnumerable<ResultListItem> GetResults()
+        // R GET ViewAllResultsByUserId
+        public IEnumerable<ResultListItem> ViewResultsByUserId()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -56,7 +58,8 @@ namespace _03_SportsBetting.Services
             }
         }
 
-        public ResultDetail GetResultById(int id)
+        // R GET ViewOneResultByResultId
+        public ResultDetail ViewResultByResultId(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -75,7 +78,8 @@ namespace _03_SportsBetting.Services
             }
         }
 
-        public bool UpdateResult(ResultEdit model)
+        // U PUT UpdateResultByResultId
+        public bool UpdateResultByResultId(ResultEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -91,7 +95,8 @@ namespace _03_SportsBetting.Services
             }
         }
 
-        public bool DeleteResult(int resultId)
+        // D DELETE RemoveResultByResultId
+        public bool RemoveResultByResultId(int resultId)
         {
             using (var ctx = new ApplicationDbContext())
             {
