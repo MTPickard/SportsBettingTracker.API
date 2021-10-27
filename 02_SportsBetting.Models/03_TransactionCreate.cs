@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _02_SportsBetting.Models
 {
-    public class TransactionModelCreate
+    public class TransactionCreate
     {
         public int UserId { get; set; }
         public int TransactionId { get; set; }
