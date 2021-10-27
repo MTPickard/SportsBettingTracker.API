@@ -36,7 +36,7 @@ namespace _03_SportsBetting.Services
             }
         }
 
-        // R GET ViewAllResultsByUserId [!]
+        // R GET ViewAllResultsByUserId
         public IEnumerable<ResultListItem> ViewResultsByUserId()
         {
             using (var ctx = new ApplicationDbContext())
