@@ -30,23 +30,23 @@ namespace SportsBettingTracker.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult GetAllBooks()
+        public IHttpActionResult GetBooksByUserId()
         {
             BookService bookService = CreateBookService();
-            var books = bookService.GetBooks();
+            var books = bookService.ViewBooksByUserId();
             return Ok(books);
         }
 
         [HttpGet]
-        public IHttpActionResult GetByBookId(int id)
+        public IHttpActionResult GetBookByBookId(int id)
         {
             BookService bookService = CreateBookService();
-            var book = bookService.GetBookById(id);
+            var book = bookService.ViewBookByBookId(id);
             return Ok(book);
         }
 
         [HttpPut]
-        public IHttpActionResult Put(BookEdit book)
+        public IHttpActionResult PutBookByBookId(BookEdit book)
         {
             if (!ModelState.IsValid)
             {
@@ -55,7 +55,7 @@ namespace SportsBettingTracker.Controllers
 
             var service = CreateBookService();
 
-            if (!service.UpdateBook(book))
+            if (!service.UpdateBookByBookId(book))
             {
                 return InternalServerError();
             }
@@ -63,11 +63,11 @@ namespace SportsBettingTracker.Controllers
         }
 
         [HttpDelete]
-        public IHttpActionResult DeleteBook(int id)
+        public IHttpActionResult DeleteBookByBookId(int id)
         {
             var service = CreateBookService();
 
-            if (!service.DeleteBook(id))
+            if (!service.RemoveBookByBookId(id))
             {
                 return InternalServerError();
             }
