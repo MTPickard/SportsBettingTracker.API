@@ -9,16 +9,19 @@ namespace _01_SportsBetting.Data
 {
     public class User
     {
+        // Key
         [Key]
         public int UserId { get; set; }
+
+        // Virtual Lists
         public virtual List<Bet> _bets { get; set; }
         public virtual List<Book> _books { get; set; }
         public virtual List<Transaction> _transactions { get; set; }
         public virtual List<Result> _results { get; set; }
 
+        // Variables
         [Required]
         public string FirstName { get; set; }
-
         public string LastName { get; set; }
         public string Password { get; set; }
     }
