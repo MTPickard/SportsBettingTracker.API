@@ -12,7 +12,7 @@ namespace SportsBettingTracker.Controllers
 {
     public class BookController : ApiController
     {
-        [HttpPost]
+        // C POST PostBook
         public IHttpActionResult PostBook(BookCreate book)
         {
             if (!ModelState.IsValid)
@@ -29,7 +29,7 @@ namespace SportsBettingTracker.Controllers
             return Ok("Book has been added.");
         }
 
-        [HttpGet]
+        // R GET GetBooksbyUserId
         public IHttpActionResult GetBooksByUserId()
         {
             BookService bookService = CreateBookService();
@@ -37,7 +37,7 @@ namespace SportsBettingTracker.Controllers
             return Ok(books);
         }
 
-        [HttpGet]
+        // R GET GetBookByBookId
         public IHttpActionResult GetBookByBookId(int id)
         {
             BookService bookService = CreateBookService();
@@ -45,7 +45,7 @@ namespace SportsBettingTracker.Controllers
             return Ok(book);
         }
 
-        [HttpPut]
+        // U PUT PutBookByBookId
         public IHttpActionResult PutBookByBookId(BookEdit book)
         {
             if (!ModelState.IsValid)
@@ -62,7 +62,7 @@ namespace SportsBettingTracker.Controllers
             return Ok("Book updated.");
         }
 
-        [HttpDelete]
+        // D DELETE DeleteBookByBookId
         public IHttpActionResult DeleteBookByBookId(int id)
         {
             var service = CreateBookService();
@@ -74,6 +74,7 @@ namespace SportsBettingTracker.Controllers
             return Ok("Book deleted.");
         }
 
+        // "Helper Method"
         private BookService CreateBookService()
         {
             var userId = int.Parse(User.Identity.GetUserId());

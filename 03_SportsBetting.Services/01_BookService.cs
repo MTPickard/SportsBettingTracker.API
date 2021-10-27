@@ -18,6 +18,7 @@ namespace _03_SportsBetting.Services
             _userId = userId;
         }
 
+        // C POST CreateBook
         public bool CreateBook(BookCreate book)
         {
             var entity =
@@ -36,6 +37,7 @@ namespace _03_SportsBetting.Services
             }
         }
 
+        // R GET ViewBooksByUserId
         public IEnumerable<BookListItem> ViewBooksByUserId()
         {
             using (var ctx = new ApplicationDbContext())
@@ -60,6 +62,7 @@ namespace _03_SportsBetting.Services
             }
         }
 
+        // R GET ViewBookByBookId
         public BookDetail ViewBookByBookId(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -85,6 +88,7 @@ namespace _03_SportsBetting.Services
             }
         }
 
+        // U PUT UpdateBookByBookId
         public bool UpdateBookByBookId(BookEdit book)
         {
             using (var ctx = new ApplicationDbContext())
@@ -105,6 +109,7 @@ namespace _03_SportsBetting.Services
             }
         }
 
+        // D DELETE RemoveBookByBookId
         public bool RemoveBookByBookId(int bookId)
         {
             using (var ctx = new ApplicationDbContext())

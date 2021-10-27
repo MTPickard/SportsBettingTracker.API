@@ -88,8 +88,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="00_UserService.cs" />
-    <Compile Include="01_BetService.cs" />
-    <Compile Include="02_BookService.cs" />
+    <Compile Include="02_BetService.cs" />
+    <Compile Include="01_BookService.cs" />
     <Compile Include="03_TransactionService.cs" />
     <Compile Include="04_ResultService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

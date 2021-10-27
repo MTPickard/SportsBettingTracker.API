@@ -18,7 +18,7 @@ namespace _03_SportsBetting.Services
             _userId = userId;
         }
 
-        //Post CreateNewTransaction
+        // C POST CreateNewTransaction
         public bool CreateNewTransaction(TransactionCreate model)
         {
             var entity =
@@ -39,7 +39,7 @@ namespace _03_SportsBetting.Services
             }
         }
 
-        // Get All Transactions by UserId
+        // R GET ViewTransactionsByUserId 
         public IEnumerable<TransactionListItem> GetAllTransactionsByUserId()
         {
             using (var ctx = new ApplicationDbContext())
@@ -65,7 +65,7 @@ namespace _03_SportsBetting.Services
             }
         }
 
-        // Get One Transaction by TransactionId
+        // R GET ViewTransactionByTransactionId
         public TransactionDetail GetOneTransactionByTransactionId(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -87,7 +87,7 @@ namespace _03_SportsBetting.Services
             }
         }
 
-        //Update Transaction By TransactionID
+        // U PUT UpdateTransactionByTransactionId
         public bool UpdateTransactionByTransactionId(TransactionEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -106,7 +106,7 @@ namespace _03_SportsBetting.Services
             }
         }
 
-        //Delete Transaction by TransactionID
+        // D DELETE RemoveTransactionByTransactionId
         public bool RemoveTransactionByTransactionId(int transactionId)
         {
             using (var ctx = new ApplicationDbContext())

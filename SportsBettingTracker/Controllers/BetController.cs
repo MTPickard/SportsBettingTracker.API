@@ -12,7 +12,7 @@ namespace SportsBettingTracker.Controllers
 {
     public class BetController : ApiController
     {
-        [HttpPost]
+        // C POST PostBet
         public IHttpActionResult PostBet(BetCreate bet)
         {
             if(!ModelState.IsValid)
@@ -29,7 +29,7 @@ namespace SportsBettingTracker.Controllers
             return Ok("Bet has been added.");
         }
 
-        [HttpGet]
+        // R GET GetBetsByUserId
         public IHttpActionResult GetBetsByUserId()
         {
             BetService betService = CreateBetService();
@@ -37,7 +37,7 @@ namespace SportsBettingTracker.Controllers
             return Ok(bets);
         }
 
-        [HttpGet]
+        // R GET GetBetByBetId
         public IHttpActionResult GetBetByBetId(int id)
         {
             BetService betService = CreateBetService();
@@ -45,7 +45,7 @@ namespace SportsBettingTracker.Controllers
             return Ok(bet);
         }
 
-        [HttpPut]
+        // U PUT PutBetByBetId
         public IHttpActionResult PutBetByBetId(BetEdit bet)
         {
             if(!ModelState.IsValid)
@@ -62,7 +62,7 @@ namespace SportsBettingTracker.Controllers
             return Ok("Bet updated.");
         }
 
-        [HttpDelete]
+        // D DELETE DeleteBetByBetId
         public IHttpActionResult DeleteBetByBetId(int id)
         {
             var service = CreateBetService();
@@ -74,7 +74,7 @@ namespace SportsBettingTracker.Controllers
             return Ok("Bet deleted.");
         }
 
-        //HelperMethod
+        // HelperMethod
         private BetService CreateBetService()
         {
             var userId = int.Parse(User.Identity.GetUserId());

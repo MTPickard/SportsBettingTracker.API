@@ -12,7 +12,7 @@ namespace SportsBettingTracker.Controllers
 {
     public class TransactionController : ApiController
     {
-        //Get Transactions by UserID
+        // C POST PostNewTransaction
         public IHttpActionResult GetAllTransactionsByUserID()
         {
             TransactionService transactionService = CreateTransactionService();
@@ -20,7 +20,7 @@ namespace SportsBettingTracker.Controllers
             return Ok(transactions);
         }
 
-        //Post Post New Transaction
+        // R GET GetTransactionsByUserId
         public IHttpActionResult PostNewTransaction(TransactionCreate transaction)
         {
             if (!ModelState.IsValid)
@@ -34,7 +34,7 @@ namespace SportsBettingTracker.Controllers
             return Ok();
         }
 
-        //Get Transaction By TransactionID
+        // R GET GetTransactionByTransactionId
         public IHttpActionResult GetTransactionByTransactionId(int id)
         {
             TransactionService transactionService = CreateTransactionService();
@@ -42,7 +42,7 @@ namespace SportsBettingTracker.Controllers
             return Ok();
         }
 
-        //Update Put Transaction By TransactionID
+        // U PUT PutTransactionByTransactionId
         public IHttpActionResult PutTransactionByTransactionID(TransactionEdit transaction)
         {
             if (!ModelState.IsValid)
@@ -57,7 +57,7 @@ namespace SportsBettingTracker.Controllers
 
         }
 
-        //Delete Transaction by TransactionID
+        // D DELETE DeleteTransactionByTransactionId
         public IHttpActionResult DeleteTransactionByTransactionID(int id)
         {
             var service = CreateTransactionService();
@@ -68,6 +68,7 @@ namespace SportsBettingTracker.Controllers
             return Ok();
         }
 
+        // Helper Method
         private TransactionService CreateTransactionService()
         {
             var userId = int.Parse(User.Identity.GetUserId());
