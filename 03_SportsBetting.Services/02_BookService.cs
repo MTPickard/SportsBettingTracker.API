@@ -36,7 +36,7 @@ namespace _03_SportsBetting.Services
             }
         }
 
-        public IEnumerable<BookListItem> GetBooks()
+        public IEnumerable<BookListItem> ViewBooksByUserId()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -60,7 +60,7 @@ namespace _03_SportsBetting.Services
             }
         }
 
-        public BookDetail GetBookById(int id)
+        public BookDetail ViewBookByBookId(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -85,7 +85,7 @@ namespace _03_SportsBetting.Services
             }
         }
 
-        public bool UpdateBook(BookEdit book)
+        public bool UpdateBookByBookId(BookEdit book)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -105,7 +105,7 @@ namespace _03_SportsBetting.Services
             }
         }
 
-        public bool DeleteBook(int bookId)
+        public bool RemoveBookByBookId(int bookId)
         {
             using (var ctx = new ApplicationDbContext())
             {
