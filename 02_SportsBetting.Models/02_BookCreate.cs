@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _02_SportsBetting.Models
 {
-    public class _02_BookModel
+    public class BookCreate
     {
         public string Name { get; set; }
 

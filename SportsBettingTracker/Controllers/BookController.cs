@@ -1,5 +1,4 @@
-﻿using _01_SportsBetting.Data;
-using _02_SportsBetting.Models;
+﻿using _02_SportsBetting.Models;
 using _03_SportsBetting.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -14,7 +13,7 @@ namespace SportsBettingTracker.Controllers
     public class BookController : ApiController
     {
         [HttpPost]
-        public IHttpActionResult Post(_02_BookModel book)
+        public IHttpActionResult PostBook(BookCreate book)
         {
             if (!ModelState.IsValid)
             {
@@ -27,27 +26,27 @@ namespace SportsBettingTracker.Controllers
             {
                 return InternalServerError();
             }
-            return Ok();
+            return Ok("Book has been added.");
         }
 
         [HttpGet]
-        public IHttpActionResult Get()
+        public IHttpActionResult GetAllBooks()
         {
-            _02_BookService bookService = CreateBookService();
-            var books = bookService.GetBookByUserId();
+            BookService bookService = CreateBookService();
+            var books = bookService.GetBooks();
             return Ok(books);
         }
 
         [HttpGet]
         public IHttpActionResult GetByBookId(int id)
         {
-            _02_BookService bookService = CreateBookService();
-            var book = bookService.GetBookByBookId(id);
+            BookService bookService = CreateBookService();
+            var book = bookService.GetBookById(id);
             return Ok(book);
         }
 
         [HttpPut]
-        public IHttpActionResult Put(Book book)
+        public IHttpActionResult Put(BookEdit book)
         {
             if (!ModelState.IsValid)
             {
@@ -60,26 +59,25 @@ namespace SportsBettingTracker.Controllers
             {
                 return InternalServerError();
             }
-            return Ok();
+            return Ok("Book updated.");
         }
 
-        // D - Delete One By GameId
         [HttpDelete]
-        public IHttpActionResult Delete(int id)
+        public IHttpActionResult DeleteBook(int id)
         {
             var service = CreateBookService();
 
-            if (service.DeleteBook(id))
+            if (!service.DeleteBook(id))
             {
                 return InternalServerError();
             }
-            return Ok();
+            return Ok("Book deleted.");
         }
 
-        private _02_BookService CreateBookService()
+        private BookService CreateBookService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var bookService = new _02_BookService(userId);
+            var userId = int.Parse(User.Identity.GetUserId());
+            var bookService = new BookService(userId);
             return bookService;
         }
     }

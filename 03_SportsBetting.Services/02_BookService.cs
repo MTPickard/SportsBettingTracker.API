@@ -9,69 +9,58 @@ using System.Threading.Tasks;
 
 namespace _03_SportsBetting.Services
 {
-    public class _02_BookService
+    public class BookService
     {
-        private readonly Guid _userId;
+        private readonly int _userId;
 
-        public _02_BookService(Guid userId)
+        public BookService(int userId)
         {
             _userId = userId;
         }
 
-        public bool CreateBook(_02_BookModel book)
+        public bool CreateBook(BookCreate book)
         {
-            var newBook = new Book()
-            {
-                Name = book.Name,
-                Balance = book.Balance,
-                BookReference = book.BookReference,
-                CreatedUtc = DateTimeOffset.Now
-            };
+            var entity =
+                new Book()
+                {
+                    Name = book.Name,
+                    Balance = book.Balance,
+                    BookReference = book.BookReference,
+                    CreatedUtc = DateTimeOffset.Now
+                };
+
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Books.Add(newBook);
+                ctx.Books.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
 
-        public Book GetBookByBookId(int bookId)
+        public IEnumerable<BookListItem> GetBooks()
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var book =
+                var query =
                     ctx
                     .Books
-                    .Where(b => b.UserId == _userId)
-                    .Single(b=> b.BookId == bookId);
-                return
-                    new Book
-                    {
-                        BookId = book.BookId,
-                        UserId = book.UserId,
-                        _transactions = book._transactions,
-                        _bets = book._bets,
-                        Name = book.Name,
-                        Balance = book.Balance,
-                        BookReference = book.BookReference,
-                        CreatedUtc = book.CreatedUtc,
-                        ModifiedUtc = book.ModifiedUtc
-                    };
+                    .Where(e => e.UserId == _userId)
+                    .Select(
+                        e =>
+                            new BookListItem
+                            {
+                                BookId = e.BookId,
+                                Name = e.Name,
+                                Balance = e.Balance,
+                                BookReference = e.BookReference,
+                                CreatedUtc = e.CreatedUtc,
+                                ModifiedUtc = e.ModifiedUtc
+                            }
+                        );
+                return query.ToArray();
             }
         }
 
-        public IQueryable<Book> GetBookByUserId()
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var book =
-                    ctx
-                    .Books
-                    .Where(b => b.UserId == _userId);
-                return book;
-            }
-        }
-
-        public bool UpdateBook(Book book)
+        public BookDetail GetBookById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -79,8 +68,34 @@ namespace _03_SportsBetting.Services
                     ctx
                     .Books
                     .Where(e => e.UserId == _userId)
-                    .Single(e => e.BookId == book.BookId);
+                    .Single(e => e.BookId == id);
+                return
+                    new BookDetail
+                    {
+                        BookId = entity.BookId,
+                        UserId = entity.UserId,
+                        _transactions = entity._transactions,
+                        _bets = entity._bets,
+                        Name = entity.Name,
+                        Balance = entity.Balance,
+                        BookReference = entity.BookReference,
+                        CreatedUtc = entity.CreatedUtc,
+                        ModifiedUtc = entity.ModifiedUtc
+                    };
+            }
+        }
 
+        public bool UpdateBook(BookEdit book)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Books
+                    .Single(e => e.BookId == book.BookId && e.UserId == _userId);
+
+                entity._transactions = book._transactions;
+                entity._bets = book._bets;
                 entity.Name = book.Name;
                 entity.Balance = book.Balance;
                 entity.BookReference = book.BookReference;
@@ -90,16 +105,15 @@ namespace _03_SportsBetting.Services
             }
         }
 
-        // D - DELETE One By GameId
-        public bool DeleteBook(int id)
+        public bool DeleteBook(int bookId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                     .Books
-                    .Where(e => e.UserId == _userId)
-                    .Single(e => e.BookId == id);
+                    .Single(e => e.BookId == bookId && e.UserId == _userId);
+
                 ctx.Books.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
