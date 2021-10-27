@@ -18,6 +18,7 @@ namespace _03_SportsBetting.Services
             _userId = userId;
         }
 
+        //Post CreateNewTransaction
         public bool CreateNewTransaction(TransactionModelCreate model)
         {
             var entity =
@@ -86,6 +87,7 @@ namespace _03_SportsBetting.Services
             }
         }
 
+        //Update Transaction By TransactionID
         public bool UpdateTransactionByTransactionId(TransactionEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -104,7 +106,8 @@ namespace _03_SportsBetting.Services
             }
         }
 
-        public bool DeleteTransactionByTransactionId(int transactionId)
+        //Delete Transaction by TransactionID
+        public bool RemoveTransactionByTransactionId(int transactionId)
         {
             using (var ctx = new ApplicationDbContext())
             {
