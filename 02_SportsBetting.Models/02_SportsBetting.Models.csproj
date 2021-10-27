@@ -96,7 +96,6 @@
     <Compile Include="02_BookDetail.cs" />
     <Compile Include="02_BookEdit.cs" />
     <Compile Include="02_BookListItem.cs" />
-    <Compile Include="02_BookModel.cs" />
     <Compile Include="03_TransactionDetail.cs" />
     <Compile Include="03_TransactionEdit.cs" />
     <Compile Include="03_TransactionListItem.cs" />
