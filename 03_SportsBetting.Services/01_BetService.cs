@@ -40,7 +40,7 @@ namespace _03_SportsBetting.Services
             }
         }
 
-        public IEnumerable<BetListItem> GetBets()
+        public IEnumerable<BetListItem> ViewBetsByUserId()
         {
             using(var ctx = new ApplicationDbContext())
             {
@@ -64,7 +64,7 @@ namespace _03_SportsBetting.Services
             }
         }
 
-        public BetDetail GetBetById(int id)
+        public BetDetail ViewBetByBetId(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -86,7 +86,7 @@ namespace _03_SportsBetting.Services
             }
         }
         
-        public bool UpdateBet(BetEdit bet)
+        public bool UpdateBetByBetId(BetEdit bet)
         {
             using(var ctx = new ApplicationDbContext())
             {
@@ -105,7 +105,7 @@ namespace _03_SportsBetting.Services
             }
         }
 
-        public bool DeleteBet(int betId)
+        public bool RemoveBetByBetId(int betId)
         {
             using(var ctx = new ApplicationDbContext())
             {
