@@ -92,6 +92,10 @@
     <Compile Include="00_UserModelCreate.cs" />
     <Compile Include="00_UserModelEdit.cs" />
     <Compile Include="00_UserModelListItem.cs" />
+    <Compile Include="02_BookCreate.cs" />
+    <Compile Include="02_BookDetail.cs" />
+    <Compile Include="02_BookEdit.cs" />
+    <Compile Include="02_BookListItem.cs" />
     <Compile Include="02_BookModel.cs" />
     <Compile Include="03_TransactionDetail.cs" />
     <Compile Include="03_TransactionEdit.cs" />
