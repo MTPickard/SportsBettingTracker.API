@@ -10,9 +10,9 @@ namespace _03_SportsBetting.Services
 {
     public class MemberService
     {
-        private readonly int _userId;
+        private readonly Guid _userId;
 
-        public MemberService (int userId)
+        public MemberService (Guid userId)
         {
             _userId = userId;
         }
@@ -24,7 +24,7 @@ namespace _03_SportsBetting.Services
             var entity =
                 new Member()
                 {
-                    MemberId = _userId,
+                    OwnerId = _userId,
                     FirstName = model.FirstName,
                     LastName = model.LastName
                 };
@@ -44,7 +44,7 @@ namespace _03_SportsBetting.Services
                 var query =
                     ctx
                         .Members
-                        .Where(e => e.MemberId == _userId)
+                        .Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>
                                 new MemberModelListItem
@@ -67,7 +67,7 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                         .Members
-                        .Single(e => e.MemberId == id && e.MemberId == _userId);
+                        .Single(e => e.MemberId == id && e.OwnerId == _userId);
                 return
                     new MemberModelDetail
                     {
@@ -86,7 +86,7 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                         .Members
-                        .Single(e => e.MemberId == model.MemberId && e.MemberId == _userId);
+                        .Single(e => e.MemberId == model.MemberId && e.OwnerId == _userId);
 
                 entity.FirstName = model.FirstName;
                 entity.LastName = model.LastName;
@@ -103,7 +103,7 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                         .Members
-                        .Single(e => e.MemberId == memberId && e.MemberId == _userId);
+                        .Single(e => e.MemberId == memberId && e.OwnerId == _userId);
 
                 ctx.Members.Remove(entity);
 

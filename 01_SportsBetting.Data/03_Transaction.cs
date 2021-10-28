@@ -14,6 +14,8 @@ namespace _01_SportsBetting.Data
         [Key]
         public int TransactionId { get; set; }
 
+        public Guid OwnerId { get; set; }
+
         // Foreign Keys
         [ForeignKey(nameof(Member))]
         public int MemberId { get; set; }

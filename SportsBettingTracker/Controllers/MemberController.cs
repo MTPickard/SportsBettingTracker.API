@@ -70,7 +70,7 @@ namespace SportsBettingTracker.Controllers
         // Helper Method
         private MemberService CreateMemberService()
         {
-            var memberId = int.Parse(User.Identity.GetUserId());
+            var memberId = Guid.Parse(User.Identity.GetUserId());
             var memberService = new MemberService(memberId);
             return memberService;
         }

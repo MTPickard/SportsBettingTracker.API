@@ -77,8 +77,8 @@ namespace SportsBettingTracker.Controllers
         // HelperMethod
         private BetService CreateBetService()
         {
-            var userId = int.Parse(User.Identity.GetUserId());
-            var betService = new BetService(userId);
+            var memberId = Guid.Parse(User.Identity.GetUserId());
+            var betService = new BetService(memberId);
             return betService;
         }
     }

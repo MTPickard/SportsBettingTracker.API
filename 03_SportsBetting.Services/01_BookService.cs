@@ -10,9 +10,9 @@ namespace _03_SportsBetting.Services
 {
     public class BookService
     {
-        private readonly int _userId;
+        private readonly Guid _userId;
 
-        public BookService(int userId)
+        public BookService(Guid userId)
         {
             _userId = userId;
         }
@@ -23,6 +23,7 @@ namespace _03_SportsBetting.Services
             var entity =
                 new Book()
                 {
+                    OwnerId = _userId,
                     Name = book.Name,
                     Balance = book.Balance,
                     BookReference = book.BookReference,
@@ -44,7 +45,7 @@ namespace _03_SportsBetting.Services
                 var query =
                     ctx
                     .Books
-                    .Where(e => e.MemberId == _userId)
+                    .Where(e => e.OwnerId == _userId)
                     .Select(
                         e =>
                             new BookListItem
@@ -69,7 +70,7 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                     .Books
-                    .Where(e => e.MemberId == _userId)
+                    .Where(e => e.OwnerId == _userId)
                     .Single(e => e.BookId == id);
                 return
                     new BookDetail
@@ -93,7 +94,7 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                     .Books
-                    .Single(e => e.BookId == book.BookId && e.MemberId == _userId);
+                    .Single(e => e.BookId == book.BookId && e.OwnerId == _userId);
 
                 entity.Name = book.Name;
                 entity.Balance = book.Balance;
@@ -112,7 +113,7 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                     .Books
-                    .Single(e => e.BookId == bookId && e.MemberId == _userId);
+                    .Single(e => e.BookId == bookId && e.OwnerId == _userId);
 
                 ctx.Books.Remove(entity);
 

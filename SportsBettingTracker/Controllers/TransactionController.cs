@@ -71,7 +71,7 @@ namespace SportsBettingTracker.Controllers
         // Helper Method
         private TransactionService CreateTransactionService()
         {
-            var userId = int.Parse(User.Identity.GetUserId());
+            var userId = Guid.Parse(User.Identity.GetUserId());
             var userService = new TransactionService(userId);
             return userService;
         }

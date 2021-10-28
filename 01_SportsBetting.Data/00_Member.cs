@@ -13,6 +13,8 @@ namespace _01_SportsBetting.Data
         [Key]
         public int MemberId { get; set; }
 
+        public Guid OwnerId { get; set; }
+
         // Foreign Keys
 
         // Virtual Lists
