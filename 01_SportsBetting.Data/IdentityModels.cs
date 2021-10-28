@@ -34,7 +34,7 @@ namespace SportsBettingTracker.Models
             return new ApplicationDbContext();
         }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<Member> Members { get; set; }
         public DbSet<Bet> Bets { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<Transaction> Transactions { get; set; }

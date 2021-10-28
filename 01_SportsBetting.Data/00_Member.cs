@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace _01_SportsBetting.Data
 {
-    public class User
+    public class Member
     {
         // Key
         [Key]
-        public int UserId { get; set; }
+        public int MemberId { get; set; }
 
         // Virtual Lists
         public virtual List<Bet> _bets { get; set; }
