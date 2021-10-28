@@ -23,6 +23,7 @@ namespace _03_SportsBetting.Services
             var entity =
                 new Book()
                 {
+                    MemberId = book.MemberId,
                     OwnerId = _userId,
                     Name = book.Name,
                     Balance = book.Balance,

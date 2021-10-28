@@ -24,6 +24,9 @@ namespace _03_SportsBetting.Services
                 new Result()
                 {
                     OwnerId = _userId,
+                    MemberId = model.MemberId,
+                    BetId = model.BetId,
+                    TransactionId = model.TransactionId,
                     DidWin = model.DidWin,
                     CreatedUtc = DateTimeOffset.Now
                 };

@@ -24,6 +24,8 @@ namespace _03_SportsBetting.Services
                 new Transaction()
                 {
                     OwnerId = _userId,
+                    MemberId = model.MemberId,
+                    BookId = model.BookId,
                     TransactionId = model.TransactionId,
                     Credit = model.Credit,
                     Debit = model.Debit,

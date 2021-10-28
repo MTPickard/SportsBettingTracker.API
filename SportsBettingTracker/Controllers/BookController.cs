@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace SportsBettingTracker.Controllers
 {
+    [Authorize]
     public class BookController : ApiController
     {
         // C POST PostBook

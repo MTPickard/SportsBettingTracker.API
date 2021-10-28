@@ -13,5 +13,7 @@ namespace _02_SportsBetting.Models
         public double Balance { get; set; }
 
         public string BookReference { get; set; }
+
+        public int MemberId { get; set; }
     }
 }

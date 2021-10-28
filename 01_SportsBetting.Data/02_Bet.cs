@@ -20,6 +20,7 @@ namespace _01_SportsBetting.Data
         [ForeignKey(nameof(Member))]
         public int MemberId { get; set; }
         public Member Member { get; set; }
+
         [ForeignKey(nameof(Book))]
         public int BookId { get; set; }
         public Book Book { get; set; }

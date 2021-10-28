@@ -23,6 +23,8 @@ namespace _03_SportsBetting.Services
             var entity =
                 new Bet()
                 {
+                    MemberId = bet.MemberId,
+                    BookId = bet.BookId,
                     OwnerId = _userId,
                     BetId = bet.BetId,
                     MatchUp = bet.MatchUp,
