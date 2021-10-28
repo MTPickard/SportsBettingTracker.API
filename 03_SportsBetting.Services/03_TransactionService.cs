@@ -24,7 +24,7 @@ namespace _03_SportsBetting.Services
             var entity =
                 new Transaction()
                 {
-                    UserId = _userId,
+                    MemberId = _userId,
                     TransactionId = model.TransactionId,
                     Credit = model.Credit,
                     Debit = model.Debit,
@@ -47,12 +47,12 @@ namespace _03_SportsBetting.Services
                 var query =
                     ctx
                         .Transactions
-                        .Where(e => e.UserId == _userId)
+                        .Where(e => e.MemberId == _userId)
                         .Select(
                             e =>
                                 new TransactionListItem
                                 {
-                                    UserId = e.UserId,
+                                    MemberId = e.MemberId,
                                     TransactionId = e.TransactionId,
                                     Credit = e.Credit,
                                     Debit = e.Debit,
@@ -73,11 +73,11 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                         .Transactions
-                        .Single(e => e.TransactionId == id && e.UserId == _userId);
+                        .Single(e => e.TransactionId == id && e.MemberId == _userId);
                 return
                     new TransactionDetail
                     {
-                        UserId = entity.UserId,
+                        MemberId = entity.MemberId,
                         TransactionId = entity.TransactionId,
                         Credit = entity.Credit,
                         Debit = entity.Debit,
@@ -95,7 +95,7 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                         .Transactions
-                        .Single(e => e.TransactionId == model.TransactionId && e.UserId == _userId);
+                        .Single(e => e.TransactionId == model.TransactionId && e.MemberId == _userId);
 
                 entity.Credit = model.Credit;
                 entity.Debit = model.Debit;
@@ -114,7 +114,7 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                       .Transactions
-                      .Single(e => e.TransactionId == transactionId && e.UserId == _userId);
+                      .Single(e => e.TransactionId == transactionId && e.MemberId == _userId);
 
                 ctx.Transactions.Remove(entity);
 

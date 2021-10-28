@@ -10,7 +10,7 @@ namespace _02_SportsBetting.Models
     {
         public int ResultId { get; set; }
 
-        public int UserId { get; set; }
+        public int MemberId { get; set; }
         public int BetId { get; set; }
         public int TransactionId { get; set; }
 

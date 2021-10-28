@@ -24,7 +24,7 @@ namespace _03_SportsBetting.Services
             var entity =
                 new Bet()
                 {
-                    UserId = _userId,
+                    MemberId = _userId,
                     BetId = bet.BetId,
                     MatchUp = bet.MatchUp,
                     BetParameters = bet.BetParameters,
@@ -49,7 +49,7 @@ namespace _03_SportsBetting.Services
                 var query =
                     ctx
                     .Bets
-                    .Where(e => e.UserId == _userId)
+                    .Where(e => e.MemberId == _userId)
                     .Select(
                         e =>
                             new BetListItem
@@ -74,7 +74,7 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                     .Bets
-                    .Single(e => e.BetId == id && e.UserId == _userId);
+                    .Single(e => e.BetId == id && e.MemberId == _userId);
                 return
                     new BetDetail
                     {
@@ -97,7 +97,7 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                     .Bets
-                    .Single(e => e.BetId == bet.BetId && e.UserId == _userId);
+                    .Single(e => e.BetId == bet.BetId && e.MemberId == _userId);
 
                 entity.MatchUp = bet.MatchUp;
                 entity.BetAmount = bet.BetAmount;
@@ -118,7 +118,7 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                     .Bets
-                    .Single(e => e.BetId == betId && e.UserId == _userId);
+                    .Single(e => e.BetId == betId && e.MemberId == _userId);
 
                 ctx.Bets.Remove(entity);
 
