@@ -8,25 +8,30 @@ using System.Threading.Tasks;
 
 namespace _01_SportsBetting.Data
 {
-    public class Result
+    public class Book
     {
-        // Key
         [Key]
-        public int ResultId { get; set; }
+        public int BookId { get; set; }
 
-        // Foreign Keys
         [ForeignKey(nameof(UserId))]
         public int UserId { get; set; }
-        [ForeignKey(nameof(BetId))]
-        public int BetId { get; set; }
-        [ForeignKey(nameof(TransactionId))]
 
-        // Virtual Lists
-        public int TransactionId { get; set; }
+        public virtual List<Transaction> _transactions { get; set; }
 
-        // Variables
-        public bool DidWin { get; set; }
+        public virtual List<Bet> _bets { get; set; }
+
+        [Required]
+        public string Name { get; set; }
+
+        [Required]
+        public double Balance { get; set; }
+
+        [Required]
+        public string BookReference { get; set; }
+
+        [Required]
         public DateTimeOffset CreatedUtc { get; set; }
+
         public DateTimeOffset ModifiedUtc { get; set; }
     }
 }

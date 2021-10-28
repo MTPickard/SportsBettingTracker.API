@@ -29,6 +29,11 @@ namespace SportsBettingTracker.Models
         {
         }
 
+        public static ApplicationDbContext Create()
+        {
+            return new ApplicationDbContext();
+        }
+
         public DbSet<User> Users { get; set; }
         public DbSet<Bet> Bets { get; set; }
         public DbSet<Book> Books { get; set; }

@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace _02_SportsBetting.Models
 {
-    class _00_UserModel
+    public class BookCreate
     {
+        public string Name { get; set; }
+
+        public double Balance { get; set; }
+
+        public string BookReference { get; set; }
     }
 }

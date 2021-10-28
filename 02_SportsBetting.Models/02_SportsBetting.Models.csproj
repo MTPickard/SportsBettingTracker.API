@@ -46,8 +46,8 @@
     <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.3\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    <Reference Include="Microsoft.Owin, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.2.0\lib\net45\Microsoft.Owin.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
@@ -84,16 +84,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="00_UserModel.cs" />
-    <Compile Include="01_BetModel.cs" />
-    <Compile Include="02_BookModel.cs" />
-    <Compile Include="03_TransactionModel.cs" />
-    <Compile Include="04_ResultModel.cs" />
+    <Compile Include="00_UserModelDetail.cs" />
+    <Compile Include="00_UserModelCreate.cs" />
+    <Compile Include="00_UserModelEdit.cs" />
+    <Compile Include="00_UserModelListItem.cs" />
+    <Compile Include="01_BookCreate.cs" />
+    <Compile Include="01_BookDetail.cs" />
+    <Compile Include="01_BookEdit.cs" />
+    <Compile Include="01_BookListItem.cs" />
+    <Compile Include="02_BetCreate.cs" />
+    <Compile Include="02_BetDetail.cs" />
+    <Compile Include="02_BetEdit.cs" />
+    <Compile Include="02_BetListItem.cs" />
+    <Compile Include="03_TransactionDetail.cs" />
+    <Compile Include="03_TransactionEdit.cs" />
+    <Compile Include="03_TransactionListItem.cs" />
+    <Compile Include="03_TransactionCreate.cs" />
+    <Compile Include="04_ResultCreate.cs" />
+    <Compile Include="04_ResultDetail.cs" />
+    <Compile Include="04_ResultEdit.cs" />
+    <Compile Include="04_ResultListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\01_SportsBetting.Data\01_SportsBetting.Data.csproj">
+      <Project>{51e49497-2abb-46f7-bcb9-f542a2e4e80c}</Project>
+      <Name>01_SportsBetting.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
