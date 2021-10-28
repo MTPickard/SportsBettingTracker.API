@@ -10,8 +10,8 @@ namespace _01_SportsBetting.Data
 {
     public class Bet
     {
-        [ForeignKey(nameof(UserId))]
-        public int UserId { get; set; }
+        [ForeignKey(nameof(MemberId))]
+        public int MemberId { get; set; }
 
         [Required]
         public int BetId { get; set; }
