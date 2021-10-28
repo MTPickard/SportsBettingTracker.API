@@ -1,6 +1,5 @@
 ﻿using _01_SportsBetting.Data;
 using _02_SportsBetting.Models;
-using SportsBettingTracker.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

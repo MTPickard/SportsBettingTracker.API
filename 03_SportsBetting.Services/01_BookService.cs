@@ -1,6 +1,5 @@
 ﻿using _01_SportsBetting.Data;
 using _02_SportsBetting.Models;
-using SportsBettingTracker.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -77,8 +76,6 @@ namespace _03_SportsBetting.Services
                     {
                         BookId = entity.BookId,
                         MemberId = entity.MemberId,
-                        _transactions = entity._transactions,
-                        _bets = entity._bets,
                         Name = entity.Name,
                         Balance = entity.Balance,
                         BookReference = entity.BookReference,
@@ -98,8 +95,6 @@ namespace _03_SportsBetting.Services
                     .Books
                     .Single(e => e.BookId == book.BookId && e.MemberId == _userId);
 
-                entity._transactions = book._transactions;
-                entity._bets = book._bets;
                 entity.Name = book.Name;
                 entity.Balance = book.Balance;
                 entity.BookReference = book.BookReference;
