@@ -13,8 +13,9 @@ namespace _01_SportsBetting.Data
         [Key]
         public int BookId { get; set; }
 
-        [ForeignKey(nameof(MemberId))]
+        [ForeignKey(nameof(Member))]
         public int MemberId { get; set; }
+        public Member Member { get; set; }
 
         public virtual List<Transaction> _transactions { get; set; }
 

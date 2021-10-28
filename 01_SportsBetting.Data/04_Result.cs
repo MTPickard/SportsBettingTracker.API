@@ -15,14 +15,20 @@ namespace _01_SportsBetting.Data
         public int ResultId { get; set; }
 
         // Foreign Keys
-        [ForeignKey(nameof(MemberId))]
+        [ForeignKey(nameof(Member))]
         public int MemberId { get; set; }
-        [ForeignKey(nameof(BetId))]
-        public int BetId { get; set; }
-        [ForeignKey(nameof(TransactionId))]
+        public Member Member { get; set; }
 
-        // Virtual Lists
+
+        [ForeignKey(nameof(Bet))]
+        public int BetId { get; set; }
+        public Bet Bet { get; set; }
+
+
+        [ForeignKey(nameof(Transaction))]
         public int TransactionId { get; set; }
+        public Transaction Transaction { get; set; }
+
 
         // Variables
         public bool DidWin { get; set; }
