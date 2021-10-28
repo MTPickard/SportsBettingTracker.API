@@ -10,6 +10,7 @@ namespace _03_SportsBetting.Services
 {
     public class MemberService
     {
+        //Note for repush
         private readonly Guid _userId;
 
         public MemberService (Guid userId)
