@@ -87,7 +87,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="00_UserService.cs" />
+    <Compile Include="00_MemberService.cs" />
     <Compile Include="01_BookService.cs" />
     <Compile Include="02_BetService.cs" />
     <Compile Include="03_TransactionService.cs" />
