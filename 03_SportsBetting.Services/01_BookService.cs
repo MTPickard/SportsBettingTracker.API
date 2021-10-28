@@ -45,7 +45,7 @@ namespace _03_SportsBetting.Services
                 var query =
                     ctx
                     .Books
-                    .Where(e => e.UserId == _userId)
+                    .Where(e => e.MemberId == _userId)
                     .Select(
                         e =>
                             new BookListItem
@@ -70,13 +70,13 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                     .Books
-                    .Where(e => e.UserId == _userId)
+                    .Where(e => e.MemberId == _userId)
                     .Single(e => e.BookId == id);
                 return
                     new BookDetail
                     {
                         BookId = entity.BookId,
-                        UserId = entity.UserId,
+                        MemberId = entity.MemberId,
                         _transactions = entity._transactions,
                         _bets = entity._bets,
                         Name = entity.Name,
@@ -96,7 +96,7 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                     .Books
-                    .Single(e => e.BookId == book.BookId && e.UserId == _userId);
+                    .Single(e => e.BookId == book.BookId && e.MemberId == _userId);
 
                 entity._transactions = book._transactions;
                 entity._bets = book._bets;
@@ -117,7 +117,7 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                     .Books
-                    .Single(e => e.BookId == bookId && e.UserId == _userId);
+                    .Single(e => e.BookId == bookId && e.MemberId == _userId);
 
                 ctx.Books.Remove(entity);
 

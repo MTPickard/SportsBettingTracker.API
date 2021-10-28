@@ -8,7 +8,7 @@ namespace _02_SportsBetting.Models
 {
     public class TransactionDetail
     {
-        public int UserId { get; set; }
+        public int MemberId { get; set; }
         public int TransactionId { get; set; }
         public double Credit { get; set; }
         public double Debit { get; set; }

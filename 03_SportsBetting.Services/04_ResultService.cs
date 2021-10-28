@@ -86,7 +86,7 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                         .Results
-                        .Single(e => e.ResultId == model.ResultId && e.UserId == _userId);
+                        .Single(e => e.ResultId == model.ResultId && e.MemberId == _userId);
 
                 entity.DidWin = model.DidWin;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
@@ -103,7 +103,7 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                         .Results
-                        .Single(e => e.ResultId == resultId && e.UserId == _userId);
+                        .Single(e => e.ResultId == resultId && e.MemberId == _userId);
 
                 ctx.Results.Remove(entity);
 
