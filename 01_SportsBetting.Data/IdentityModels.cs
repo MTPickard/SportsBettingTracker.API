@@ -3,12 +3,11 @@ using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using _01_SportsBetting.Data;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 
-namespace SportsBettingTracker.Models
+namespace _01_SportsBetting.Data
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
@@ -34,7 +33,7 @@ namespace SportsBettingTracker.Models
             return new ApplicationDbContext();
         }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<Member> Members { get; set; }
         public DbSet<Bet> Bets { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<Transaction> Transactions { get; set; }

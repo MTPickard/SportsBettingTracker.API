@@ -11,11 +11,7 @@ namespace _02_SportsBetting.Models
     {
         public int BookId { get; set; }
 
-        public int UserId { get; set; }
-
-        public virtual List<Transaction> _transactions { get; set; }
-
-        public virtual List<Bet> _bets { get; set; }
+        public int MemberId { get; set; }
 
         public string Name { get; set; }
 

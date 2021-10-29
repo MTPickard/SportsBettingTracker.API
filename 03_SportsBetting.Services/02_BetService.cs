@@ -1,6 +1,5 @@
 ﻿using _01_SportsBetting.Data;
 using _02_SportsBetting.Models;
-using SportsBettingTracker.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +10,9 @@ namespace _03_SportsBetting.Services
 {
     public class BetService
     {
-        private readonly int _userId;
+        private readonly Guid _userId;
 
-        public BetService(int userId)
+        public BetService(Guid userId)
         {
             _userId = userId;
         }
@@ -24,7 +23,9 @@ namespace _03_SportsBetting.Services
             var entity =
                 new Bet()
                 {
-                    UserId = _userId,
+                    MemberId = bet.MemberId,
+                    BookId = bet.BookId,
+                    OwnerId = _userId,
                     BetId = bet.BetId,
                     MatchUp = bet.MatchUp,
                     BetParameters = bet.BetParameters,
@@ -49,7 +50,7 @@ namespace _03_SportsBetting.Services
                 var query =
                     ctx
                     .Bets
-                    .Where(e => e.UserId == _userId)
+                    .Where(e => e.OwnerId == _userId)
                     .Select(
                         e =>
                             new BetListItem
@@ -74,7 +75,7 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                     .Bets
-                    .Single(e => e.BetId == id && e.UserId == _userId);
+                    .Single(e => e.BetId == id && e.OwnerId == _userId);
                 return
                     new BetDetail
                     {
@@ -97,7 +98,7 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                     .Bets
-                    .Single(e => e.BetId == bet.BetId && e.UserId == _userId);
+                    .Single(e => e.BetId == bet.BetId && e.OwnerId == _userId);
 
                 entity.MatchUp = bet.MatchUp;
                 entity.BetAmount = bet.BetAmount;
@@ -118,7 +119,7 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                     .Bets
-                    .Single(e => e.BetId == betId && e.UserId == _userId);
+                    .Single(e => e.BetId == betId && e.OwnerId == _userId);
 
                 ctx.Bets.Remove(entity);
 

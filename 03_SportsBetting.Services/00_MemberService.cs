@@ -1,6 +1,5 @@
 ﻿using _01_SportsBetting.Data;
 using _02_SportsBetting.Models;
-using SportsBettingTracker.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,48 +8,49 @@ using System.Threading.Tasks;
 
 namespace _03_SportsBetting.Services
 {
-    public class UserService
+    public class MemberService
     {
-        private readonly int _userId;
+        //Note for repush
+        private readonly Guid _userId;
 
-        public UserService (int userId)
+        public MemberService (Guid userId)
         {
             _userId = userId;
         }
 
         //Throwing note in here
-        // C POST CreateUser
-        public bool CreateUser(UserModelCreate model)
+        // C POST CreateMember
+        public bool CreateMember(MemberModelCreate model)
         {
             var entity =
-                new User()
+                new Member()
                 {
-                    UserId = _userId,
+                    OwnerId = _userId,
                     FirstName = model.FirstName,
                     LastName = model.LastName
                 };
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Users.Add(entity);
+                ctx.Members.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
 
-        // R GET ViewUsers
-        public IEnumerable<UserModelListItem> GetUsers()
+        // R GET ViewMembers
+        public IEnumerable<MemberModelListItem> ViewMembers()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                        .Users
-                        .Where(e => e.UserId == _userId)
+                        .Members
+                        .Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>
-                                new UserModelListItem
+                                new MemberModelListItem
                                 {
-                                    UserId = e.UserId,
+                                    MemberId = e.MemberId,
                                     FirstName = e.FirstName,
                                     LastName = e.LastName
                                 }
@@ -60,34 +60,34 @@ namespace _03_SportsBetting.Services
             }
         }
 
-        // R GET ViewUserByUserId
-        public UserModelDetail GetUserById(int id)
+        // R GET ViewMemberByUserId
+        public MemberModelDetail ViewMemberById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                        .Users
-                        .Single(e => e.UserId == id && e.UserId == _userId);
+                        .Members
+                        .Single(e => e.MemberId == id && e.OwnerId == _userId);
                 return
-                    new UserModelDetail
+                    new MemberModelDetail
                     {
-                        UserId = entity.UserId,
+                        MemberId = entity.MemberId,
                         FirstName = entity.FirstName,
                         LastName = entity.LastName
                     };
             }
         }
 
-        // U PUT UpdateUserByUserId
-        public bool UpdateUser(UserModelEdit model)
+        // U PUT UpdateMemberByMemberId
+        public bool UpdateMemberById(MemberModelEdit model)
         {
             using(var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                        .Users
-                        .Single(e => e.UserId == model.UserId && e.UserId == _userId);
+                        .Members
+                        .Single(e => e.MemberId == model.MemberId && e.OwnerId == _userId);
 
                 entity.FirstName = model.FirstName;
                 entity.LastName = model.LastName;
@@ -96,17 +96,17 @@ namespace _03_SportsBetting.Services
             }
         }
 
-        // D DELETE RemoveUserByUserId
-        public bool DeleteUser(int userId)
+        // D DELETE RemoveMemberByMemberId
+        public bool DeleteMemberById(int memberId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                        .Users
-                        .Single(e => e.UserId == userId && e.UserId == _userId);
+                        .Members
+                        .Single(e => e.MemberId == memberId && e.OwnerId == _userId);
 
-                ctx.Users.Remove(entity);
+                ctx.Members.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
             }

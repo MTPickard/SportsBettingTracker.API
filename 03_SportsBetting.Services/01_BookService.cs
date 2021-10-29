@@ -1,6 +1,5 @@
 ﻿using _01_SportsBetting.Data;
 using _02_SportsBetting.Models;
-using SportsBettingTracker.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +10,9 @@ namespace _03_SportsBetting.Services
 {
     public class BookService
     {
-        private readonly int _userId;
+        private readonly Guid _userId;
 
-        public BookService(int userId)
+        public BookService(Guid userId)
         {
             _userId = userId;
         }
@@ -24,6 +23,8 @@ namespace _03_SportsBetting.Services
             var entity =
                 new Book()
                 {
+                    MemberId = book.MemberId,
+                    OwnerId = _userId,
                     Name = book.Name,
                     Balance = book.Balance,
                     BookReference = book.BookReference,
@@ -45,7 +46,7 @@ namespace _03_SportsBetting.Services
                 var query =
                     ctx
                     .Books
-                    .Where(e => e.UserId == _userId)
+                    .Where(e => e.OwnerId == _userId)
                     .Select(
                         e =>
                             new BookListItem
@@ -70,15 +71,13 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                     .Books
-                    .Where(e => e.UserId == _userId)
+                    .Where(e => e.OwnerId == _userId)
                     .Single(e => e.BookId == id);
                 return
                     new BookDetail
                     {
                         BookId = entity.BookId,
-                        UserId = entity.UserId,
-                        _transactions = entity._transactions,
-                        _bets = entity._bets,
+                        MemberId = entity.MemberId,
                         Name = entity.Name,
                         Balance = entity.Balance,
                         BookReference = entity.BookReference,
@@ -96,10 +95,8 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                     .Books
-                    .Single(e => e.BookId == book.BookId && e.UserId == _userId);
+                    .Single(e => e.BookId == book.BookId && e.OwnerId == _userId);
 
-                entity._transactions = book._transactions;
-                entity._bets = book._bets;
                 entity.Name = book.Name;
                 entity.Balance = book.Balance;
                 entity.BookReference = book.BookReference;
@@ -117,7 +114,7 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                     .Books
-                    .Single(e => e.BookId == bookId && e.UserId == _userId);
+                    .Single(e => e.BookId == bookId && e.OwnerId == _userId);
 
                 ctx.Books.Remove(entity);
 

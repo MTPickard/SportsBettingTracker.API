@@ -8,8 +8,9 @@ namespace _02_SportsBetting.Models
 {
     public class TransactionCreate
     {
-        public int UserId { get; set; }
+        public int MemberId { get; set; }
         public int TransactionId { get; set; }
+        public int BookId { get; set; }
         public double Credit { get; set; }
         public double Debit { get; set; }
         public string TransactionNote { get; set; }

@@ -14,16 +14,19 @@ namespace _01_SportsBetting.Data
         [Key]
         public int TransactionId { get; set; }
 
+        public Guid OwnerId { get; set; }
+
         // Foreign Keys
-        [ForeignKey(nameof(UserId))]
-        public int UserId { get; set; }
-        [ForeignKey(nameof(BookId))]
+        [ForeignKey(nameof(Member))]
+        public int MemberId { get; set; }
+        public Member Member { get; set; }
+
+        [ForeignKey(nameof(Book))]
         public int BookId { get; set; }
+        public Book Book { get; set; }
 
         // Variables
-        // deposit or winnings
         public double Credit { get; set; }
-        // withdrawal or loss
         public double Debit { get; set; }
         public string TransactionNote { get; set; }
         public DateTimeOffset CreatedUtc { get; set; }

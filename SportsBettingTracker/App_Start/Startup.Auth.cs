@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using SportsBettingTracker.Providers;
 using SportsBettingTracker.Models;
+using _01_SportsBetting.Data;
 
 namespace SportsBettingTracker
 {
