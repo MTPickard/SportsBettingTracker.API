@@ -12,7 +12,7 @@ namespace SportsBettingTracker.Controllers
 {
     public class TransactionController : ApiController
     {
-        // C POST PostNewTransaction
+        // R GET GetAllTransactionsByUserID
         public IHttpActionResult GetAllTransactionsByUserID()
         {
             TransactionService transactionService = CreateTransactionService();
@@ -20,7 +20,7 @@ namespace SportsBettingTracker.Controllers
             return Ok(transactions);
         }
 
-        // R GET GetTransactionsByUserId
+        // C POST PostNewTransaction
         public IHttpActionResult PostNewTransaction(TransactionCreate transaction)
         {
             if (!ModelState.IsValid)
