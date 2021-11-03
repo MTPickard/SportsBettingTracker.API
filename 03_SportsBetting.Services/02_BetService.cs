@@ -28,8 +28,9 @@ namespace _03_SportsBetting.Services
                     OwnerId = _userId,
                     BetId = bet.BetId,
                     MatchUp = bet.MatchUp,
-                    BetParameters = bet.BetParameters,
+                    BetDescription = bet.BetDescription,
                     BetAmount = bet.BetAmount,
+                    BetOdds = bet.BetOdds,
                     ToWin = bet.ToWin,
                     IsResolved = bet.IsResolved,
                     CreatedUTC = DateTimeOffset.Now
@@ -57,7 +58,9 @@ namespace _03_SportsBetting.Services
                             {
                                 BetId = e.BetId,
                                 MatchUp = e.MatchUp,
-                                BetParameters = e.BetParameters,
+                                BetDescription = e.BetDescription,
+                                BetAmount = e.BetAmount,
+                                BetOdds = e.BetOdds,
                                 ToWin = e.ToWin,
                                 IsResolved = e.IsResolved,
                                 CreatedUTC = e.CreatedUTC
@@ -81,8 +84,9 @@ namespace _03_SportsBetting.Services
                     {
                         BetId = entity.BetId,
                         MatchUp = entity.MatchUp,
+                        BetDescription = entity.BetDescription,
                         BetAmount = entity.BetAmount,
-                        BetParameters = entity.BetParameters,
+                        BetOdds = entity.BetOdds,
                         ToWin = entity.ToWin,
                         IsResolved = entity.IsResolved,
                         CreatedUTC = entity.CreatedUTC
@@ -101,8 +105,9 @@ namespace _03_SportsBetting.Services
                     .Single(e => e.BetId == bet.BetId && e.OwnerId == _userId);
 
                 entity.MatchUp = bet.MatchUp;
+                entity.BetDescription = bet.BetDescription;
                 entity.BetAmount = bet.BetAmount;
-                entity.BetParameters = bet.BetParameters;
+                entity.BetOdds = bet.BetOdds;
                 entity.ToWin = bet.ToWin;
                 entity.IsResolved = bet.IsResolved;
                 entity.ModifiedUTC = DateTimeOffset.Now;
@@ -124,6 +129,26 @@ namespace _03_SportsBetting.Services
                 ctx.Bets.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
+            }
+        }
+
+        // Calculating Bet Odds
+        // Would be used in UI once built out
+        public decimal CalculatingBetOdds(decimal odds)
+        {
+            Bet bet = new Bet();
+
+            if (odds > 0)
+            {
+                decimal realOdds = odds / 100;
+                bet.ToWin = bet.BetAmount * realOdds;
+                return bet.ToWin;
+            }
+            else
+            {
+                decimal realOdds = 100 / odds;
+                bet.ToWin = bet.BetAmount * realOdds;
+                return bet.ToWin;
             }
         }
     }
