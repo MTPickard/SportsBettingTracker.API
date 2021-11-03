@@ -12,13 +12,16 @@ namespace _02_SportsBetting.Models
         public int MemberId { get; set; }
 
         public int BetId { get; set; }
+
         public int BookId { get; set; }
 
         public string MatchUp { get; set; }
 
-        public string BetParameters { get; set; }
+        public string BetDescription { get; set; }
 
         public decimal BetAmount { get; set; }
+
+        public double BetOdds { get; set; }
 
         public decimal ToWin { get; set; }
 
