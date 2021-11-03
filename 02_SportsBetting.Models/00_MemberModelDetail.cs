@@ -11,6 +11,9 @@ namespace _02_SportsBetting.Models
         public int MemberId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string FullName { get; set; }
+        public string FullName
+        {
+            get { return FirstName + " " + LastName; }
+        }
     }
 }

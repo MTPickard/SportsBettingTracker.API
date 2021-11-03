@@ -52,6 +52,9 @@ namespace _03_SportsBetting.Services
                                 new ResultListItem
                                 {
                                     ResultId = e.ResultId,
+                                    MemberId = e.MemberId,
+                                    BetId = e.BetId,
+                                    TransactionId = e.TransactionId,
                                     DidWin = e.DidWin,
                                     CreatedUtc = e.CreatedUtc
                                 }
@@ -73,6 +76,9 @@ namespace _03_SportsBetting.Services
                     new ResultDetail
                     {
                         ResultId = entity.ResultId,
+                        MemberId = entity.MemberId,
+                        BetId = entity.BetId,
+                        TransactionId = entity.TransactionId,
                         DidWin = entity.DidWin,
                         CreatedUtc = entity.CreatedUtc,
                         ModifiedUtc = entity.ModifiedUtc

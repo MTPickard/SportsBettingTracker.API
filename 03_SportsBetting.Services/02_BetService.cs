@@ -26,7 +26,6 @@ namespace _03_SportsBetting.Services
                     MemberId = bet.MemberId,
                     BookId = bet.BookId,
                     OwnerId = _userId,
-                    BetId = bet.BetId,
                     MatchUp = bet.MatchUp,
                     BetDescription = bet.BetDescription,
                     BetAmount = bet.BetAmount,

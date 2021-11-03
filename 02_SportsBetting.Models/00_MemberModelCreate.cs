@@ -13,6 +13,9 @@ namespace _02_SportsBetting.Models
 
         public string LastName { get; set; }
 
-        public string FullName { get; set; }
+        public string FullName
+        {
+            get { return FirstName + " " + LastName; }
+        }
     }
 }

@@ -101,6 +101,10 @@
     <Compile Include="Migrations\202110282018439_Something.designer.cs">
       <DependentUpon>202110282018439_Something.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111031834448_Betting Information Changed.cs" />
+    <Compile Include="Migrations\202111031834448_Betting Information Changed.Designer.cs">
+      <DependentUpon>202111031834448_Betting Information Changed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -114,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110282018439_Something.resx">
       <DependentUpon>202110282018439_Something.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111031834448_Betting Information Changed.resx">
+      <DependentUpon>202111031834448_Betting Information Changed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

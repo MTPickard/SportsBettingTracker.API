@@ -11,8 +11,6 @@ namespace _02_SportsBetting.Models
     {
         public int MemberId { get; set; }
 
-        public int BetId { get; set; }
-
         public int BookId { get; set; }
 
         public string MatchUp { get; set; }
