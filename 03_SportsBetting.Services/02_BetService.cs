@@ -133,23 +133,9 @@ namespace _03_SportsBetting.Services
         }
 
         // Calculating Bet Odds
-        // Would be used in UI once built out
-        public decimal CalculatingBetOdds(decimal odds)
+       public double CalculatingPercentChange(odds)
         {
-            Bet bet = new Bet();
 
-            if (odds > 0)
-            {
-                decimal realOdds = odds / 100;
-                bet.ToWin = bet.BetAmount * realOdds;
-                return bet.ToWin;
-            }
-            else
-            {
-                decimal realOdds = 100 / odds;
-                bet.ToWin = bet.BetAmount * realOdds;
-                return bet.ToWin;
-            }
         }
     }
 }
