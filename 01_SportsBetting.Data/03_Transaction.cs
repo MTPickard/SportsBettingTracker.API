@@ -14,6 +14,8 @@ namespace _01_SportsBetting.Data
         [Key]
         public int TransactionId { get; set; }
 
+        public Guid OwnerId { get; set; }
+
         // Foreign Keys
         [ForeignKey(nameof(Member))]
         public int MemberId { get; set; }
@@ -24,9 +26,7 @@ namespace _01_SportsBetting.Data
         public Book Book { get; set; }
 
         // Variables
-        // deposit or winnings
         public double Credit { get; set; }
-        // withdrawal or loss
         public double Debit { get; set; }
         public string TransactionNote { get; set; }
         public DateTimeOffset CreatedUtc { get; set; }

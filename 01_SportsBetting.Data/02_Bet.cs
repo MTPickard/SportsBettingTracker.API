@@ -10,20 +10,35 @@ namespace _01_SportsBetting.Data
 {
     public class Bet
     {
+        // Key
+        [Key]
+        public int BetId { get; set; }
+
+        public Guid OwnerId { get; set; }
+
+        // Foreign Keys
         [ForeignKey(nameof(Member))]
         public int MemberId { get; set; }
         public Member Member { get; set; }
 
-        [Required]
-        public int BetId { get; set; }
+        [ForeignKey(nameof(Book))]
+        public int BookId { get; set; }
+        public Book Book { get; set; }
 
+        // Virtual Lists
+
+        // Variables
         [Required]
         public string MatchUp { get; set; }
 
-        public string BetParameters { get; set; }
+        [Required]
+        public string BetDescription { get; set; }
 
         [Required]
         public decimal BetAmount { get; set; }
+
+        [Required]
+        public double BetOdds { get; set; }
 
         [Required]
         public decimal ToWin { get; set; }

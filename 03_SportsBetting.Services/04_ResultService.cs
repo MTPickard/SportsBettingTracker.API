@@ -1,6 +1,5 @@
 ﻿using _01_SportsBetting.Data;
 using _02_SportsBetting.Models;
-using SportsBettingTracker.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +10,9 @@ namespace _03_SportsBetting.Services
 {
     public class ResultService
     {
-        private readonly int _userId;
+        private readonly Guid _userId;
 
-        public ResultService(int userId)
+        public ResultService(Guid userId)
         {
             _userId = userId;
         }
@@ -24,7 +23,10 @@ namespace _03_SportsBetting.Services
             var entity =
                 new Result()
                 {
-                    ResultId = _userId,
+                    OwnerId = _userId,
+                    MemberId = model.MemberId,
+                    BetId = model.BetId,
+                    TransactionId = model.TransactionId,
                     DidWin = model.DidWin,
                     CreatedUtc = DateTimeOffset.Now
                 };
@@ -44,7 +46,7 @@ namespace _03_SportsBetting.Services
                 var query =
                     ctx
                         .Results
-                        .Where(e => e.ResultId == _userId)
+                        .Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>
                                 new ResultListItem
@@ -66,7 +68,7 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                         .Results
-                        .Single(e => e.ResultId == id && e.ResultId == _userId);
+                        .Single(e => e.ResultId == id && e.OwnerId == _userId);
                 return
                     new ResultDetail
                     {
@@ -86,10 +88,10 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                         .Results
-                        .Single(e => e.ResultId == model.ResultId && e.MemberId == _userId);
+                        .Single(e => e.ResultId == model.ResultId && e.OwnerId == _userId);
 
                 entity.DidWin = model.DidWin;
-                entity.ModifiedUtc = DateTimeOffset.UtcNow;
+                entity.ModifiedUtc = DateTimeOffset.Now;
 
                 return ctx.SaveChanges() == 1;
             }
@@ -103,7 +105,7 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                         .Results
-                        .Single(e => e.ResultId == resultId && e.MemberId == _userId);
+                        .Single(e => e.ResultId == resultId && e.OwnerId == _userId);
 
                 ctx.Results.Remove(entity);
 

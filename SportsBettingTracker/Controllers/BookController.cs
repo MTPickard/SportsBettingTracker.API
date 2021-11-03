@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace SportsBettingTracker.Controllers
 {
+    [Authorize]
     public class BookController : ApiController
     {
         // C POST PostBook
@@ -77,7 +78,7 @@ namespace SportsBettingTracker.Controllers
         // "Helper Method"
         private BookService CreateBookService()
         {
-            var userId = int.Parse(User.Identity.GetUserId());
+            var userId = Guid.Parse(User.Identity.GetUserId());
             var bookService = new BookService(userId);
             return bookService;
         }

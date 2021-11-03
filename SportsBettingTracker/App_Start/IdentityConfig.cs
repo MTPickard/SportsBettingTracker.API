@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using _01_SportsBetting.Data;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;

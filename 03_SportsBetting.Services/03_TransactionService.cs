@@ -1,6 +1,5 @@
 ﻿using _01_SportsBetting.Data;
 using _02_SportsBetting.Models;
-using SportsBettingTracker.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +10,9 @@ namespace _03_SportsBetting.Services
 {
     public class TransactionService
     {
-        private readonly int _userId;
+        private readonly Guid _userId;
 
-        public TransactionService (int userId)
+        public TransactionService (Guid userId)
         {
             _userId = userId;
         }
@@ -24,12 +23,14 @@ namespace _03_SportsBetting.Services
             var entity =
                 new Transaction()
                 {
-                    MemberId = _userId,
+                    OwnerId = _userId,
+                    MemberId = model.MemberId,
+                    BookId = model.BookId,
                     TransactionId = model.TransactionId,
                     Credit = model.Credit,
                     Debit = model.Debit,
                     TransactionNote = model.TransactionNote,
-                    CreatedUtc = model.CreatedUtc
+                    CreatedUtc = DateTimeOffset.Now
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -47,7 +48,7 @@ namespace _03_SportsBetting.Services
                 var query =
                     ctx
                         .Transactions
-                        .Where(e => e.MemberId == _userId)
+                        .Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>
                                 new TransactionListItem
@@ -73,7 +74,7 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                         .Transactions
-                        .Single(e => e.TransactionId == id && e.MemberId == _userId);
+                        .Single(e => e.TransactionId == id && e.OwnerId == _userId);
                 return
                     new TransactionDetail
                     {
@@ -95,12 +96,12 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                         .Transactions
-                        .Single(e => e.TransactionId == model.TransactionId && e.MemberId == _userId);
+                        .Single(e => e.TransactionId == model.TransactionId && e.OwnerId == _userId);
 
                 entity.Credit = model.Credit;
                 entity.Debit = model.Debit;
                 entity.TransactionNote = model.TransactionNote;
-                entity.ModifiedUtc = model.ModifiedUtc;
+                entity.ModifiedUtc = DateTimeOffset.Now;
 
                 return ctx.SaveChanges() == 1;
             }
@@ -114,7 +115,7 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                       .Transactions
-                      .Single(e => e.TransactionId == transactionId && e.MemberId == _userId);
+                      .Single(e => e.TransactionId == transactionId && e.OwnerId == _userId);
 
                 ctx.Transactions.Remove(entity);
 
