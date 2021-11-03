@@ -30,14 +30,24 @@ namespace _01_SportsBetting.Data
         // Variables
         [Required]
         public string MatchUp { get; set; }
-        public string BetParameters { get; set; }
+
+        [Required]
+        public string BetDescription { get; set; }
+
         [Required]
         public decimal BetAmount { get; set; }
+
+        [Required]
+        public double BetOdds { get; set; }
+
         [Required]
         public decimal ToWin { get; set; }
+
         public bool IsResolved { get; set; }
+
         [Required]
         public DateTimeOffset CreatedUTC { get; set; }
+
         public DateTimeOffset? ModifiedUTC { get; set; }
     }
 }
