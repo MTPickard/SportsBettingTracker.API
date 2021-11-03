@@ -1,6 +1,5 @@
 ﻿using _01_SportsBetting.Data;
 using _02_SportsBetting.Models;
-using SportsBettingTracker.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +10,9 @@ namespace _03_SportsBetting.Services
 {
     public class BetService
     {
-        private readonly int _userId;
+        private readonly Guid _userId;
 
-        public BetService(int userId)
+        public BetService(Guid userId)
         {
             _userId = userId;
         }
@@ -24,11 +23,14 @@ namespace _03_SportsBetting.Services
             var entity =
                 new Bet()
                 {
-                    MemberId = _userId,
+                    MemberId = bet.MemberId,
+                    BookId = bet.BookId,
+                    OwnerId = _userId,
                     BetId = bet.BetId,
                     MatchUp = bet.MatchUp,
-                    BetParameters = bet.BetParameters,
+                    BetDescription = bet.BetDescription,
                     BetAmount = bet.BetAmount,
+                    BetOdds = bet.BetOdds,
                     ToWin = bet.ToWin,
                     IsResolved = bet.IsResolved,
                     CreatedUTC = DateTimeOffset.Now
@@ -49,14 +51,16 @@ namespace _03_SportsBetting.Services
                 var query =
                     ctx
                     .Bets
-                    .Where(e => e.MemberId == _userId)
+                    .Where(e => e.OwnerId == _userId)
                     .Select(
                         e =>
                             new BetListItem
                             {
                                 BetId = e.BetId,
                                 MatchUp = e.MatchUp,
-                                BetParameters = e.BetParameters,
+                                BetDescription = e.BetDescription,
+                                BetAmount = e.BetAmount,
+                                BetOdds = e.BetOdds,
                                 ToWin = e.ToWin,
                                 IsResolved = e.IsResolved,
                                 CreatedUTC = e.CreatedUTC
@@ -74,14 +78,15 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                     .Bets
-                    .Single(e => e.BetId == id && e.MemberId == _userId);
+                    .Single(e => e.BetId == id && e.OwnerId == _userId);
                 return
                     new BetDetail
                     {
                         BetId = entity.BetId,
                         MatchUp = entity.MatchUp,
+                        BetDescription = entity.BetDescription,
                         BetAmount = entity.BetAmount,
-                        BetParameters = entity.BetParameters,
+                        BetOdds = entity.BetOdds,
                         ToWin = entity.ToWin,
                         IsResolved = entity.IsResolved,
                         CreatedUTC = entity.CreatedUTC
@@ -97,11 +102,12 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                     .Bets
-                    .Single(e => e.BetId == bet.BetId && e.MemberId == _userId);
+                    .Single(e => e.BetId == bet.BetId && e.OwnerId == _userId);
 
                 entity.MatchUp = bet.MatchUp;
+                entity.BetDescription = bet.BetDescription;
                 entity.BetAmount = bet.BetAmount;
-                entity.BetParameters = bet.BetParameters;
+                entity.BetOdds = bet.BetOdds;
                 entity.ToWin = bet.ToWin;
                 entity.IsResolved = bet.IsResolved;
                 entity.ModifiedUTC = DateTimeOffset.Now;
@@ -118,11 +124,31 @@ namespace _03_SportsBetting.Services
                 var entity =
                     ctx
                     .Bets
-                    .Single(e => e.BetId == betId && e.MemberId == _userId);
+                    .Single(e => e.BetId == betId && e.OwnerId == _userId);
 
                 ctx.Bets.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
+            }
+        }
+
+        // Calculating Bet Odds
+        // Would be used in UI once built out
+        public decimal CalculatingBetOdds(decimal odds)
+        {
+            Bet bet = new Bet();
+
+            if (odds > 0)
+            {
+                decimal realOdds = odds / 100;
+                bet.ToWin = bet.BetAmount * realOdds;
+                return bet.ToWin;
+            }
+            else
+            {
+                decimal realOdds = 100 / odds;
+                bet.ToWin = bet.BetAmount * realOdds;
+                return bet.ToWin;
             }
         }
     }
