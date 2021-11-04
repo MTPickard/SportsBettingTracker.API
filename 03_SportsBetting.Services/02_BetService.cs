@@ -35,7 +35,7 @@ namespace _03_SportsBetting.Services
                     CreatedUTC = DateTimeOffset.Now
                 };
 
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 ctx.Bets.Add(entity);
                 return ctx.SaveChanges() == 1;
@@ -45,7 +45,7 @@ namespace _03_SportsBetting.Services
         // R GET ViewBetsByUserId
         public IEnumerable<BetListItem> ViewBetsByUserId()
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
@@ -96,7 +96,7 @@ namespace _03_SportsBetting.Services
         // U PUT UpdateBetByBetId
         public bool UpdateBetByBetId(BetEdit bet)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
@@ -118,7 +118,7 @@ namespace _03_SportsBetting.Services
         // D DELETE RemoveBetByBetId
         public bool RemoveBetByBetId(int betId)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
@@ -132,9 +132,23 @@ namespace _03_SportsBetting.Services
         }
 
         // Calculating Bet Odds
-       public double CalculatingPercentChange(odds)
+        // Would be used in UI once built out
+        public decimal CalculatingBetOdds(decimal odds)
         {
+            Bet bet = new Bet();
 
+            if (odds > 0)
+            {
+                decimal realOdds = odds / 100;
+                bet.ToWin = bet.BetAmount * realOdds;
+                return bet.ToWin;
+            }
+            else
+            {
+                decimal realOdds = 100 / odds;
+                bet.ToWin = bet.BetAmount * realOdds;
+                return bet.ToWin;
+            }
         }
     }
 }
